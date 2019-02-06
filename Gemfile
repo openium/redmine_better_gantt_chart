@@ -15,4 +15,4 @@
   #gem 'pry'
 #end
 
-gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'
+#gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finders'

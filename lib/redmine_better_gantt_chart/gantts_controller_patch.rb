@@ -1,11 +1,15 @@
 # Patching GanttsController to use our own gantt helper
+
+require 'redmine/helpers/better_gantt'
+
 module RedmineBetterGanttChart
   module GanttsControllerPatch
     def self.included(base)
      base.send(:include, InstanceMethods) 
 
      base.class_eval do 
-       alias_method_chain :show, :custom_helper
+       alias_method :show_without_custom_help, :show
+       alias_method :show, :show_with_custom_helper
      end
     end
 

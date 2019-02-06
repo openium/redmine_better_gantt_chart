@@ -309,18 +309,18 @@
 <tr>
   <td align="left">
 	  <%= link_to("\xc2\xab " + l(:label_previous),
-		      {:params => params.merge(@gantt.params_previous)}) %>
+		      {:params => params.to_unsafe_h.merge(@gantt.params_previous)}) %>
   </td>
   <td align="right">
 	  <%= link_to(l(:label_next) + " \xc2\xbb",
-		      {:params => params.merge(@gantt.params_next)}) %>
+		      {:params => params.to_unsafe_h.merge(@gantt.params_next)}) %>
   </td>
 </tr>
 </table>
 
 <% other_formats_links do |f| %>
-  <%= f.link_to 'PDF', :url => params.merge(@gantt.params) %>
-  <%= f.link_to('PNG', :url => params.merge(@gantt.params)) if @gantt.respond_to?('to_image') %>
+  <%= f.link_to 'PDF', :url => params.to_unsafe_h.merge(@gantt.params) %>
+  <%= f.link_to('PNG', :url => params.to_unsafe_h.merge(@gantt.params)) if @gantt.respond_to?('to_image') %>
 <% end %>
 <% end # query.valid? %>
 

@@ -4,10 +4,14 @@ module RedmineBetterGanttChart
       base.send(:include, InstanceMethods)
 
       base.class_eval do
-        alias_method_chain :reschedule_following_issues, :fast_update
-        alias_method_chain :reschedule_on!, :earlier_date
-        alias_method_chain :soonest_start, :dependent_parent_validation
-        alias_method_chain :duration, :work_days
+	alias_method :reschedule_following_issues_without_fast_update, :reschedule_following_issues
+	alias_method :reschedule_following_issues, :reschedule_following_issues_with_fast_update
+	alias_method :reschedule_on_without_earlier_date, :reschedule_on!
+	alias_method :reschedule_on!, :reschedule_on_with_earlier_date!
+	alias_method :soonest_start_without_dependent_parent_validation, :soonest_start
+	alias_method :soonest_start, :soonest_start_with_dependent_parent_validation
+	alias_method :duration_without_work_days, :duration
+	alias_method :duration, :duration_with_work_days
       end
     end
 

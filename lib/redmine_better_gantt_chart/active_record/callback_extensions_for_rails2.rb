@@ -6,7 +6,8 @@ module RedmineBetterGanttChart
         base.extend ClassMethods
 
         base.class_eval do
-          alias_method_chain :callback, :switch
+          alias_method :callback_without_switch, :callback
+          alias_method :callback, :callback_with_switch
           class_inheritable_accessor :disabled_callbacks
           self.disabled_callbacks = []  # set default to empty array
         end
